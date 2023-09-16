@@ -1,12 +1,8 @@
-from Utiles import Utiles
 from model.Alumno import Alumno
-from model.Persona import Persona
+from services.AlumnoService import AlumnoService
 import datetime
 
 correcto = False
-
-
-
 while correcto == False:
     try:
         print("Elija el tamaño de la lista: (Debe ser mayor a 0)")
@@ -19,47 +15,21 @@ while correcto == False:
     except ValueError:
         print("El dato introducido no es un numero")
 
-empty = True
+alumno_service = AlumnoService()
 
-alumno = Alumno()
-persona = Persona()
+alumno: Alumno = Alumno()
 
-while empty:
-    print("Introduzca el nombre del alumno:")
-    nombre = input()
-    if Utiles.is_string_valid(nombre):
-        alumno.set_nombre(nombre)
-        persona.nombre = nombre
-    if len(alumno.get_nombre()) > 0 :
-        empty = False
+alumno_service.set_nombre_alumno(alumno)
 
+alumno_service.set_apellido_alumno()
+   
+alumno_service.set_edad_alumno()
 
-empty = True
+#alumno.set_fecha_nacimiento(datetime.datetime.now())5
 
-while empty:
-    print("Introduzca el apellido del alumno: ")
-    apellido = input()
+alumno: Alumno = alumno_service.alumno
 
-    if Utiles.is_string_valid(apellido):
-        alumno.set_apellido(apellido)
-        persona.apellido = apellido
-
-    if len(alumno.get_apellido()) > 0:
-        empty = False    
-
-print(type(alumno.get_edad()))
-
-while alumno.get_edad() == 0:
-    try:
-        print("Introduzca la edad del alumno: ")
-        edad = int(input())
-        alumno.set_edad(edad)
-        persona.edad = edad
-    except ValueError:
-        print("El valor introducido no es un número")
-
-alumno.set_fecha_nacimiento(datetime.datetime.now())
-persona.fecha_nacimiento = datetime.datetime.now();
+alumno_clonado = alumno_service.clonar_alumno(alumno)
 
 i = 1
 
@@ -82,4 +52,4 @@ while i <= sizeLista:
 print(lista)
 print(len(lista))
 print("Alumno: ",alumno.get_nombre(), alumno.get_apellido(), alumno.get_edad(), alumno.get_fecha_nacimiento())
-print("Persona: ", persona.nombre, persona.apellido, persona.edad, persona.fecha_nacimiento)
+print("Alumno clonado: ",alumno_clonado.get_nombre(), alumno_clonado.get_apellido(), alumno_clonado.get_edad(), alumno_clonado.get_fecha_nacimiento())
