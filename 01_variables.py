@@ -1,5 +1,5 @@
 from model.Alumno import Alumno
-from services.AlumnoService import AlumnoService
+import services.AlumnoService as alumno_service
 import datetime
 
 correcto = False
@@ -15,8 +15,6 @@ while correcto == False:
     except ValueError:
         print("El dato introducido no es un numero")
 
-alumno_service = AlumnoService()
-
 alumno: Alumno = Alumno()
 
 alumno_service.set_nombre_alumno(alumno)
@@ -25,9 +23,11 @@ alumno_service.set_apellido_alumno(alumno)
    
 alumno_service.set_edad_alumno(alumno)
 
-#alumno.set_fecha_nacimiento(datetime.datetime.now())5
+alumno.set_fecha_nacimiento(datetime.datetime.now())
 
-alumno_clonado = alumno_service.clonar_alumno(alumno)
+alumno_clonado: Alumno = Alumno()
+
+alumno_service.clonar_alumno(alumno_clonado, alumno)
 
 i = 1
 
@@ -51,3 +51,6 @@ print(lista)
 print(len(lista))
 print("Alumno: ",alumno.get_nombre(), alumno.get_apellido(), alumno.get_edad(), alumno.get_fecha_nacimiento())
 print("Alumno clonado: ",alumno_clonado.get_nombre(), alumno_clonado.get_apellido(), alumno_clonado.get_edad(), alumno_clonado.get_fecha_nacimiento())
+
+print(alumno)
+print(alumno_clonado)
