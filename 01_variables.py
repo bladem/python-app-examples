@@ -21,13 +21,11 @@ alumno: Alumno = Alumno()
 
 alumno_service.set_nombre_alumno(alumno)
 
-alumno_service.set_apellido_alumno()
+alumno_service.set_apellido_alumno(alumno)
    
-alumno_service.set_edad_alumno()
+alumno_service.set_edad_alumno(alumno)
 
 #alumno.set_fecha_nacimiento(datetime.datetime.now())5
-
-alumno: Alumno = alumno_service.alumno
 
 alumno_clonado = alumno_service.clonar_alumno(alumno)
 
