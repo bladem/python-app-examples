@@ -1,4 +1,4 @@
-from model import Alumno
+from model.Alumno import Alumno
 import Utiles
 
 
@@ -36,8 +36,10 @@ def set_edad_alumno(alumno_parameter: Alumno):
             print("El valor introducido no es un número")
 
 
-def clonar_alumno(alumno_clonado: Alumno, alumno_parameter: Alumno):
+def clonar_alumno(alumno_parameter: Alumno):
+    alumno_clonado: Alumno = Alumno()
     alumno_clonado.set_nombre(alumno_parameter.get_nombre())
     alumno_clonado.set_apellido(alumno_parameter.get_apellido())
     alumno_clonado.set_edad(alumno_parameter.get_edad())
     alumno_clonado.set_fecha_nacimiento(alumno_parameter.get_fecha_nacimiento())
+    return alumno_clonado

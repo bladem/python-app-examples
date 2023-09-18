@@ -25,9 +25,7 @@ alumno_service.set_edad_alumno(alumno)
 
 alumno.set_fecha_nacimiento(datetime.datetime.now())
 
-alumno_clonado: Alumno = Alumno()
-
-alumno_service.clonar_alumno(alumno_clonado, alumno)
+alumno_clonado = alumno_service.clonar_alumno(alumno)
 
 i = 1
 
